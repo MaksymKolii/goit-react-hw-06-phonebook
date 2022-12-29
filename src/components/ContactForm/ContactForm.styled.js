@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { Form, Field } from 'formik';
 
-export const FormSt = styled(Form)`
+export const Form = styled.form`
   width: 300px;
   border: 2px solid black;
   border-radius: 5px;
@@ -22,7 +21,7 @@ export const Label = styled.label`
   }
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   width: 200px;
   padding: 10px 0 10px 10px;
   border: 1px solid #d3b0f7;
@@ -51,4 +50,9 @@ export const Button = styled.button`
     background-color: #188ce8;
     color: white;
   }
+`;
+export const Div = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  color: red;
 `;
