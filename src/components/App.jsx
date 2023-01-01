@@ -10,58 +10,58 @@ import { Section } from './Section/Section';
 import { useState } from 'react';
 
 export function App() {
-  const [contacts, setContacts] = useLocalStorage('contacts', []);
+  // const [contacts, setContacts] = useLocalStorage('contacts', []);
 
-  const [filter, setFilter] = useState('');
+  // const [filter, setFilter] = useState('');
 
-  // *const addContact = (name, number) => {
-  const addContact = data => {
-    const newContact = {
-      id: nanoid(),
-      //* name,
-      //* number,
-      ...data,
-    };
+  // // *const addContact = (name, number) => {
+  // const addContact = data => {
+  //   const newContact = {
+  //     id: nanoid(),
+  //     //* name,
+  //     //* number,
+  //     ...data,
+  //   };
 
-    const isNameExist = contacts.find(({ name, number }) => {
-      return name === newContact.name || number === newContact.number;
-    });
+  //   const isNameExist = contacts.find(({ name, number }) => {
+  //     return name === newContact.name || number === newContact.number;
+  //   });
 
-    isNameExist
-      ? window.alert(`${newContact.name} is alredy in contacts!`)
-      : setContacts(prevS => [newContact, ...prevS]);
-  };
+  //   isNameExist
+  //     ? window.alert(`${newContact.name} is alredy in contacts!`)
+  //     : setContacts(prevS => [newContact, ...prevS]);
+  // };
 
-  const deleteContact = iD => {
-    setContacts(prevContacts => prevContacts.filter(({ id }) => id !== iD));
-  };
+  // const deleteContact = iD => {
+  //   setContacts(prevContacts => prevContacts.filter(({ id }) => id !== iD));
+  // };
 
-  const onFilterChange = ev => {
-    setFilter(ev.target.value);
-  };
+  // const onFilterChange = ev => {
+  //   setFilter(ev.target.value);
+  // };
 
-  const getFilteredContacts = () =>
-    contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+  // const getFilteredContacts = () =>
+  //   contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(filter.toLowerCase())
+  //   );
 
-  const showContactsOptions = () => {
-    return filter ? getFilteredContacts() : contacts;
-  };
+  // const showContactsOptions = () => {
+  //   return filter ? getFilteredContacts() : contacts;
+  // };
 
-  const options = showContactsOptions();
+  // const options = showContactsOptions();
   return (
     <>
       <Section>
         <h1>Phonebook</h1>
-        <ContactForm addUser={addContact}></ContactForm>
+        <ContactForm />
       </Section>
       <Section>
         <h2>Contacts</h2>
-        <Filter filtered={filter} filterChange={onFilterChange}></Filter>
+        <Filter></Filter>
         <ContactList
-          options={options}
-          onClickDelete={deleteContact}
+        // options={options}
+        // onClickDelete={deleteContact}
         ></ContactList>
       </Section>
 

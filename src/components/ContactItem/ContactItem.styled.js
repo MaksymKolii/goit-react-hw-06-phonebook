@@ -5,9 +5,9 @@ export const List = styled.li`
   justify-content: space-between;
   align-items: center;
   border: 1px solid #ccc;
-  padding: 6px 0;
+  padding: 4px 0;
   :not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 7px;
   }
 `;
 

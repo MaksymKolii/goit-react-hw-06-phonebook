@@ -2,11 +2,22 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { Form, Label, Input, Button, Div } from './ContactForm.styled';
+import { nanoid } from 'nanoid';
+import { useSelector, useDispatch } from 'react-redux';
+import { getContacts } from 'redux/contacts/contacts-selectors';
 
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
 
-export const ContactForm = ({ addUser }) => {
+import { addContact } from 'redux/contacts/contacts-actions';
+
+export const ContactForm = () => {
+  const contacts = useSelector(getContacts);
+  // const [name, setName] = useState('');
+  // const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
+
   const nameTemplates =
     /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
@@ -15,6 +26,7 @@ export const ContactForm = ({ addUser }) => {
 
   const formik = useFormik({
     initialValues: {
+      id: '',
       name: '',
       number: '',
     },
@@ -32,7 +44,19 @@ export const ContactForm = ({ addUser }) => {
         .required('Required'),
     }),
     onSubmit: (values, { resetForm }) => {
-      addUser(values);
+      const isNameExist = contacts.find(({ name, number }) => {
+        return name === values.name || number === values.number;
+      });
+
+      if (isNameExist) {
+        window.alert(`${values.name} is alredy in contacts!`);
+        return;
+      }
+
+      values.id = nanoid();
+      dispatch(addContact(values));
+
+      alert(`${values.name} was successfully added to contacts`);
       resetForm();
     },
   });
