@@ -4,7 +4,6 @@ import { App } from 'components/App';
 import './index.css';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
-console.log(store);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
