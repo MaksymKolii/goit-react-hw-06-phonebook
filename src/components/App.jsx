@@ -1,13 +1,13 @@
 // import { useState, useEffect } from 'react';
-import { useLocalStorage } from './Hooks/useLocalStorage';
+// import { useLocalStorage } from './Hooks/useLocalStorage';
 import { GlobalStyle } from './Utils/GlobalStyle';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 
 import { Section } from './Section/Section';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 export function App() {
   // const [contacts, setContacts] = useLocalStorage('contacts', []);
@@ -58,11 +58,8 @@ export function App() {
       </Section>
       <Section>
         <h2>Contacts</h2>
-        <Filter></Filter>
-        <ContactList
-        // options={options}
-        // onClickDelete={deleteContact}
-        ></ContactList>
+        <Filter />
+        <ContactList />
       </Section>
 
       <GlobalStyle />

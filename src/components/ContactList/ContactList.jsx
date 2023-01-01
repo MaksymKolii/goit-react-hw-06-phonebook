@@ -26,37 +26,26 @@ export function ContactList() {
 
   // contacts.length !== 0 && getFilteredContacts.length !== 0;
 
-  // const showContactsOptions = () => {
-  //   return filter ? getFilteredContacts : contacts;
-  // };
+  const showContactsOptions = () => {
+    return filter ? getFilteredContacts : contacts;
+  };
 
-  // const options = showContactsOptions();
-
-  // return contacts.length !== 0 && getFilteredContacts.length !== 0 ? (
-  //   <ul>
-  //     {getFilteredContacts.map(({ name, number, id }) => (
-  //       <List key={id}>
-  //         <ContactItem name={name} number={number} id={id}></ContactItem>
-  //       </List>
-  //     ))}
-  //   </ul>
-  // ) : contacts.length === 0 ? (
-  //   <p>Unfortunately your contacts list is empty</p>
-  // ) : (
-  //   <p>
-  //     Your list does not contain the contact named
-  //     <span> {filter}</span>
-  //   </p>
-  // );
+  const options = showContactsOptions();
 
   return (
-    <ListUl>
-      {contacts.map(({ id, name, number }) => (
-        <List key={id}>
-          <ContactItem id={id} name={name} number={number}></ContactItem>
-        </List>
-      ))}
-    </ListUl>
+    <>
+      <ListUl>
+        {contacts.map(({ id, name, number }) => (
+          <List key={id}>
+            <ContactItem id={id} name={name} number={number}></ContactItem>
+          </List>
+        ))}
+      </ListUl>
+      {/* <p>
+        Your list does not contain the contact named
+        <span> {filter}</span>
+      </p> */}
+    </>
   );
 }
 
