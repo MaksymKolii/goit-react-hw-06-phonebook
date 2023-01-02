@@ -7,6 +7,16 @@ import { deleteContact } from '../../redux/contacts/contactsSlice';
 
 export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
+
+  // const removeContact = id => {
+  //   dispatch(remove(id)); remove frpm slice!
+  // };
+
+  //  const handleRemoveContact = id => {
+  //    removeContact(id);
+  //    Notify.success(`Contact successfully removed`);
+  //  };
+
   return (
     <>
       <P>

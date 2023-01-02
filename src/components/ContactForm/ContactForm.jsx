@@ -5,6 +5,7 @@ import { Form, Label, Input, Button, Div } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/contacts/contacts-selectors';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
@@ -13,9 +14,6 @@ import { addContact } from 'redux/contacts/contactsSlice';
 
 export const ContactForm = () => {
   const contacts = useSelector(getContacts);
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
-
   const dispatch = useDispatch();
 
   const nameTemplates =
@@ -43,21 +41,21 @@ export const ContactForm = () => {
         .matches(phoneTemplates, 'Phone number is not valid')
         .required('Required'),
     }),
-    
+
     onSubmit: (values, { resetForm }) => {
       const isNameExist = contacts.find(({ name, number }) => {
         return name === values.name || number === values.number;
       });
 
       if (isNameExist) {
-        window.alert(`${values.name} is alredy in contacts!`);
+        Notify.info(`${values.name} is alredy in contacts!`);
         return;
       }
 
       values.id = nanoid();
       dispatch(addContact(values));
 
-      alert(`${values.name} was successfully added to contacts`);
+      Notify.success(`${values.name} was successfully added to contacts`);
       resetForm();
     },
   });
