@@ -1,7 +1,4 @@
-// import { useState, useEffect } from 'react';
-// import { useLocalStorage } from './Hooks/useLocalStorage';
 import { GlobalStyle } from './Utils/GlobalStyle';
-// import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';

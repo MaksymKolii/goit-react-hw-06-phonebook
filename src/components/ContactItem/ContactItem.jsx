@@ -4,18 +4,15 @@ import { Span, P } from './ContactItem.styled';
 import { ReactComponent as DeleteIcon } from '../../Icons/delete2.svg';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/contactsSlice';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
-  // const removeContact = id => {
-  //   dispatch(remove(id)); remove frpm slice!
-  // };
-
-  //  const handleRemoveContact = id => {
-  //    removeContact(id);
-  //    Notify.success(`Contact successfully removed`);
-  //  };
+  const onDeleteContact = () => {
+    dispatch(deleteContact(id));
+    Notify.success(`Contact successfully removed`);
+  };
 
   return (
     <>
@@ -27,7 +24,8 @@ export const ContactItem = ({ id, name, number }) => {
       </P>
 
       <IconButton
-        onClick={() => dispatch(deleteContact(id))}
+        // onClick={() => dispatch(deleteContact(id))}
+        onClick={onDeleteContact}
         aria-label="Удалить контакт"
       >
         <DeleteIcon width={20} height={20}></DeleteIcon>
