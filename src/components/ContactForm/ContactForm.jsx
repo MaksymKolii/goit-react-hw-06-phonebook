@@ -9,7 +9,7 @@ import { getContacts } from 'redux/contacts/contacts-selectors';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
 
-import { addContact } from 'redux/contacts/contacts-actions';
+import { addContact } from 'redux/contacts/contactsSlice';
 
 export const ContactForm = () => {
   const contacts = useSelector(getContacts);
@@ -43,6 +43,7 @@ export const ContactForm = () => {
         .matches(phoneTemplates, 'Phone number is not valid')
         .required('Required'),
     }),
+    
     onSubmit: (values, { resetForm }) => {
       const isNameExist = contacts.find(({ name, number }) => {
         return name === values.name || number === values.number;

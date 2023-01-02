@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Span, P } from './ContactItem.styled';
 import { ReactComponent as DeleteIcon } from '../../Icons/delete2.svg';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/contacts-actions';
+import { deleteContact } from '../../redux/contacts/contactsSlice';
 
 export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();

@@ -14,29 +14,29 @@ export function ContactList() {
   const filter = useSelector(getFilter);
   console.log(filter);
 
-  // const getFilteredContacts = contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(filter)
-  // );
+  const getFilteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter)
+  );
 
-  // const showContactsOptions = () => {
-  //   return filter ? getFilteredContacts : contacts;
-  // };
+  const showContactsOptions = () => {
+    return filter ? getFilteredContacts : contacts;
+  };
 
-  // const options = showContactsOptions();
+  const options = showContactsOptions();
 
   return (
     <>
       <ListUl>
-        {contacts.map(({ id, name, number }) => (
+        {options.map(({ id, name, number }) => (
           <List key={id}>
             <ContactItem id={id} name={name} number={number}></ContactItem>
           </List>
         ))}
       </ListUl>
-      {/* <p>
+      <p>
         Your list does not contain the contact named
         <span> {filter}</span>
-      </p> */}
+      </p>
     </>
   );
 }
