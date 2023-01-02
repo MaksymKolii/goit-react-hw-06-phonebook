@@ -25,5 +25,5 @@ export const Filter = () => {
 
 Filter.propTypes = {
   onChange: PropTypes.func,
-  value: PropTypes.string,
+  // value: PropTypes.string,
 };
