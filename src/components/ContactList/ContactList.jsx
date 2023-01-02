@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 
 import { List } from '../ContactItem/ContactItem.styled';
-import { ListUl } from './ContactList.styled';
+import { ListUl, P, Span } from './ContactList.styled';
 
 export function ContactList() {
   const contacts = useSelector(getContacts);
@@ -27,16 +27,19 @@ export function ContactList() {
   return (
     <>
       <ListUl>
-        {options.map(({ id, name, number }) => (
-          <List key={id}>
-            <ContactItem id={id} name={name} number={number}></ContactItem>
-          </List>
-        ))}
+        {getFilteredContacts.length !== 0 ? (
+          options.map(({ id, name, number }) => (
+            <List key={id}>
+              <ContactItem id={id} name={name} number={number}></ContactItem>
+            </List>
+          ))
+        ) : (
+          <P>
+            You don't have any contacts named
+            <Span> {filter}</Span>
+          </P>
+        )}
       </ListUl>
-      <p>
-        Your list does not contain the contact named
-        <span> {filter}</span>
-      </p>
     </>
   );
 }
