@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/contacts/contacts-selectors';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { getStatus } from 'components/services/ansverApi';
 
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
@@ -26,6 +27,7 @@ export const ContactForm = () => {
       id: '',
       name: '',
       number: '',
+      status: '',
     },
 
     validationSchema: yup.object().shape({
@@ -41,7 +43,7 @@ export const ContactForm = () => {
         .required('Required'),
     }),
 
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       const isNameExist = contacts.find(({ name, number }) => {
         return name === values.name || number === values.number;
       });
@@ -50,8 +52,9 @@ export const ContactForm = () => {
         Notify.info(`${values.name} is alredy in contacts!`);
         return;
       }
-
+      const stat = await getStatus();
       values.id = nanoid();
+      values.status = stat;
       dispatch(addContact(values));
 
       Notify.success(`${values.name} was successfully added to contacts`);

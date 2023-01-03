@@ -5,8 +5,9 @@ import { ReactComponent as DeleteIcon } from '../../Icons/delete2.svg';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/contactsSlice';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Avatar from 'react-avatar';
 
-export const ContactItem = ({ id, name, number }) => {
+export const ContactItem = ({ id, name, number, status }) => {
   const dispatch = useDispatch();
 
   const onDeleteContact = () => {
@@ -16,6 +17,15 @@ export const ContactItem = ({ id, name, number }) => {
 
   return (
     <>
+      {/* <Avatar githubHandle="sitebase" size={150} round="20px" /> */}
+      <Span>
+        <Avatar name={name} size="35" round={true} />
+      </Span>
+      {/* <Avatar name={name} size="40" round={true} /> */}
+
+      <P>
+        Is online :<Span>{status}</Span>
+      </P>
       <P>
         Name:<Span>{name}</Span>
       </P>

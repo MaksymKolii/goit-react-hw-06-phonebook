@@ -28,9 +28,14 @@ export function ContactList() {
     <>
       <ListUl>
         {getFilteredContacts.length !== 0 ? (
-          options.map(({ id, name, number }) => (
+          options.map(({ id, name, number, status }) => (
             <List key={id}>
-              <ContactItem id={id} name={name} number={number}></ContactItem>
+              <ContactItem
+                id={id}
+                name={name}
+                number={number}
+                status={status}
+              ></ContactItem>
             </List>
           ))
         ) : (
