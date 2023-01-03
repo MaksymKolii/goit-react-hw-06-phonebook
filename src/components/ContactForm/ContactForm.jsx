@@ -27,7 +27,7 @@ export const ContactForm = () => {
       id: '',
       name: '',
       number: '',
-      status: '',
+      // status: '',
     },
 
     validationSchema: yup.object().shape({
@@ -53,8 +53,9 @@ export const ContactForm = () => {
         return;
       }
       const stat = await getStatus();
-      values.id = nanoid();
       values.status = stat;
+
+      values.id = nanoid();
       dispatch(addContact(values));
 
       Notify.success(`${values.name} was successfully added to contacts`);

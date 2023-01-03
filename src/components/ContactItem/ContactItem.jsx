@@ -17,12 +17,9 @@ export const ContactItem = ({ id, name, number, status }) => {
 
   return (
     <>
-      {/* <Avatar githubHandle="sitebase" size={150} round="20px" /> */}
       <Span>
         <Avatar name={name} size="35" round={true} />
       </Span>
-      {/* <Avatar name={name} size="40" round={true} /> */}
-
       <P>
         Is online :<Span>{status}</Span>
       </P>
