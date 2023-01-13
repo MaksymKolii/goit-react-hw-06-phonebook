@@ -1,9 +1,10 @@
 import { IconButton } from 'components/IconButtons/IconButton';
 import PropTypes from 'prop-types';
 import { Span, P } from './ContactItem.styled';
-import { ReactComponent as DeleteIcon } from '../../Icons/delete2.svg';
+// import { ReactComponent as DeleteIcon } from '../../Icons/delete2.svg';
+import { ReactComponent as DeleteIcon } from 'Icons/delete2.svg';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/contactsSlice';
+import { deleteContact } from 'redux/contacts/contactsSlice';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Avatar from 'react-avatar';
 
